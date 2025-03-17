@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قطات - تطوير التطبيقات وتصميم المواقع</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        body {
+            background-color: #0a192f;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #64ffda;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-right: 20px;
+        }
+        
+        nav ul li a {
+            color: #ccd6f6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: #64ffda;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+        
+        .site-logo {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .site-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .hero {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 0 40px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(100, 255, 218, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 70% 70%, rgba(0, 100, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(255, 100, 255, 0.05) 0%, transparent 30%);
+            z-index: -1;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(30deg, #0a192f 12%, transparent 12.5%, transparent 87%, #0a192f 87.5%, #0a192f),
+                linear-gradient(150deg, #0a192f 12%, transparent 12.5%, transparent 87%, #0a192f 87.5%, #0a192f),
+                linear-gradient(30deg, #0a192f 12%, transparent 12.5%, transparent 87%, #0a192f 87.5%, #0a192f),
+                linear-gradient(150deg, #0a192f 12%, transparent 12.5%, transparent 87%, #0a192f 87.5%, #0a192f),
+                linear-gradient(60deg, rgba(100, 255, 218, 0.05) 25%, transparent 25.5%, transparent 75%, rgba(100, 255, 218, 0.05) 75%, rgba(100, 255, 218, 0.05));
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0;
+            z-index: -2;
+            opacity: 0.3;
+        }
+        
+        .header-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+        
+        .header-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(100, 255, 218, 0.1), transparent);
+            border-radius: 12px;
+        }
+        
+        .content {
+            width: 100%;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .title {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #ccd6f6;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #8892b0;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .app-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+            justify-content: center;
+        }
+        
+        .app-button {
+            display: flex;
+            align-items: center;
+            background-color: #64ffda;
+            color: #0a192f;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .app-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
+        }
+        
+        .app-button svg {
+            margin-left: 10px;
+            width: 24px;
+            height: 24px;
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: rgba(100, 255, 218, 0.5);
+            border-radius: 50%;
+        }
+        
+        .app-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 60px;
+            margin-bottom: 40px;
+        }
+        
+        .device {
+            width: 280px;
+            height: 560px;
+            background-color: #1e2d40;
+            border-radius: 30px;
+            padding: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+        
+        .device:hover {
+            transform: translateY(-10px);
+        }
+        
+        .device::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(100, 255, 218, 0.1), rgba(0, 100, 255, 0.1));
+            z-index: -1;
+        }
+        
+        .device-screen {
+            width: 100%;
+            height: 100%;
+            background-color: #121f35;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .device-notch {
+            width: 120px;
+            height: 25px;
+            background-color: #0a192f;
+            border-radius: 0 0 20px 20px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        
+        .device-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .features-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #64ffda;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: rgba(30, 45, 64, 0.5);
+            border-radius: 10px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(100, 255, 218, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+        }
+        
+        .feature-icon svg {
+            width: 30px;
+            height: 30px;
+            color: #64ffda;
+        }
+        
+        .feature-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #ccd6f6;
+        }
+        
+        .feature-description {
+            color: #8892b0;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 0 0 20px;
+            }
+            
+            .title {
+                font-size: 36px;
+            }
+            
+            .subtitle {
+                font-size: 18px;
+            }
+            
+            .app-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .app-showcase {
+                margin-top: 40px;
+            }
+            
+            .device {
+                width: 240px;
+                height: 480px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .site-logo {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">قطات لتقنية المعلومات</div>
+            <nav>
+                <ul>
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#">خدماتنا</a></li>
+                    <li><a href="#">تطبيقاتنا</a></li>
+                    <li><a href="#">من نحن</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <div class="hero">
+            <div class="logo-container">
+                <img src="/api/placeholder/150/150" alt="شعار قطات" class="site-logo">
+            </div>
+            
+            <div class="header-image">
+                <img src="/api/placeholder/800/400" alt="تصميم التطبيقات والبرمجة">
+            </div>
+            
+            <div class="content">
+                <h1 class="title">تطوير التطبيقات وتصميم المواقع</h1>
+                <p class="subtitle">نحن نقدم حلولًا تكنولوجية متكاملة لبناء تطبيقات متطورة ومواقع ويب عصرية تلبي احتياجاتك وتحقق أهدافك.</p>
+                
+                <div class="app-links">
+                    <a href="#" class="app-button">
+                        تحميل من App Store
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                            <path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0
+                                39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="app-button">
+                        تحميل من Google Play
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path fill="currentColor" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.

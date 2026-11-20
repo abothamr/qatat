@@ -167,6 +167,7 @@ header{height:75px}
 @media(max-width:768px){.iphone{width:min(220px,60vw);border-radius:40px}.iphone-screen{border-radius:31px}}
 @media(prefers-reduced-motion:reduce){.iphone{animation:none}}
 </style>
+<link rel="prefetch" as="image" href="app-screenshot-eng.png">
 </head>
 
 <body>
@@ -196,7 +197,7 @@ header{height:75px}
             <div class="iphone">
                 <div class="iphone-screen">
                     <span class="island"></span>
-                    <img src="app-screenshot.png" alt="Qatatna app screenshot / صورة تطبيق قطتنا" class="app-shot">
+                    <img id="appShot" src="app-screenshot.png" data-src-ar="app-screenshot.png" data-src-en="app-screenshot-eng.png" alt="Qatatna app screenshot / صورة تطبيق قطتنا" class="app-shot">
                 </div>
             </div>
         </div>
@@ -293,6 +294,8 @@ header{height:75px}
     document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
     document.querySelectorAll('[data-i18n]').forEach(function (el) { el.innerHTML = dict[el.dataset.i18n]; });
     document.title = TITLE[l];
+    var shot = document.getElementById('appShot');
+    if (shot) shot.src = l === 'en' ? shot.dataset.srcEn : shot.dataset.srcAr;
     if (meta) meta.content = DESC[l];
     document.getElementById('langBtn').textContent = l === 'ar' ? 'English' : 'العربية';
     try { localStorage.setItem('qatat-lang', l); } catch (e) {}

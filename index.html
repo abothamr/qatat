@@ -122,8 +122,19 @@ footer span{color:#8ccaff}
 header{height:75px}
 .brand-name{font-size:17px}
 .contact-link{font-size:12px}
-.hero{padding:65px 0 45px}
-.site-logo{width:105px;height:105px}
+.hero {
+    position: relative;
+    text-align: center;
+    padding: 130px 0 75px;
+    overflow: hidden;
+}
+.site-logo {
+    width: 90%;
+    max-width: 480px;
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
+}
 .hero-tagline{font-size:15px;padding:0 10px}
 .app-links{flex-direction:column;align-items:center;margin-bottom:45px}
 .app-button{width:min(100%,290px)}

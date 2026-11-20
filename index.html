@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -508,26 +507,43 @@ footer span {
     </div>
 </section>
 
+```html
+<!-- QATATNA GISCUS COMMENTS -->
+
 <section class="container">
     <div class="comments-section">
 
-        <h2 class="comments-title">التعليقات والآراء</h2>
+        <h2 class="comments-title">
+            شاركنا رأيك
+        </h2>
 
         <p class="comments-description">
-            يسعدنا معرفة رأيك وتجربتك، شاركنا اقتراحاتك وانطباعاتك.
+            نسعد بآرائكم واقتراحاتكم، شاركونا تجربتكم مع قطات.
         </p>
 
-        <div id="cusdis_thread"
-            data-host="https://cusdis.com"
-            data-app-id="dd81dc90-960d-4d52-9e0f-270731b08f85"
-            data-page-id="index-page"
-            data-page-url="https://qatat.net"
-            data-page-title="قطات - الرئيسية"
-            data-theme="dark">
+        <div id="giscus-container">
+            <script
+                src="https://giscus.app/client.js"
+                data-repo="YOUR_USERNAME/qatat-comments"
+                data-repo-id="YOUR_REPO_ID"
+                data-category="General"
+                data-category-id="YOUR_CATEGORY_ID"
+                data-mapping="url"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="dark"
+                data-lang="ar"
+                crossorigin="anonymous"
+                async>
+            </script>
         </div>
 
     </div>
 </section>
+
+<!-- END GISCUS -->
 
 </main>
 
@@ -541,4 +557,4 @@ footer span {
 
 </body>
 </html>
-```
+
